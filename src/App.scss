@@ -1,0 +1,30 @@
+$cell-dim: 40px;
+$primary:  #4baa9b;
+$primary-dark: #358377;
+
+.container {
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    font-family: Montserrat;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.input, .button {
+    font-family: Montserrat;
+    font-size: 1em;
+}
+
+.input {
+    margin: 16px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    padding: 12px;
+    
+    &:focus {
+        outline: none;
+        border-color: $primary;
+    }
+}

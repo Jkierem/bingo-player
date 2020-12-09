@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "latir-bingo-player",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

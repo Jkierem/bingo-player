@@ -1,0 +1,23 @@
+$cell-dim: 40px;
+$primary:  #4baa9b;
+$primary-dark: #358377;
+
+.login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        max-height: 120px;
+        max-width: 120px;
+        display: flex;
+        flex-direction: column;
+        
+        &__logo {
+            margin: 0 auto;
+        }
+    }
+}

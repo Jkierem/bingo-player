@@ -1,0 +1,72 @@
+$primary:  #4baa9b;
+$primary-dark: #358377;
+
+.button {
+    margin: 8px;
+    background-color: $primary;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-dark;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &--loading {
+        cursor: progress;
+    }
+
+    &__label--loading {
+        visibility: hidden;
+    }
+
+    &__loader {
+        position: absolute;
+        left: 0; 
+        right: 0; 
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        $radius: 12px;
+        $duration: 1.2s;
+
+        &__dot {
+            display: inline-block;
+            margin: 4px;
+            width: $radius;
+            height: $radius;
+            background-color: white;
+            border-radius: 50%;
+            animation: shrink 1.4s infinite ease-in-out both;
+        }
+        & > &__dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        & > &__dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes shrink {
+            0%, 80%, 100% { 
+                transform: scale(0.2);
+            } 40% { 
+                transform: scale(1.0);
+            }
+        }
+    }
+}
