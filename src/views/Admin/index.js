@@ -121,7 +121,7 @@ const Admin = () => {
                 {hist.map((x,idx) => <li key={idx}>{x}</li>)}
             </ul>
             <ul>
-                Todos los bingos:
+                Todos los bingos: ({bingos.length})
                 {bingos.map((x,idx) => <li key={idx}>{x}</li>)}
             </ul>
         </div>

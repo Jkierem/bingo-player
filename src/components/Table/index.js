@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { range } from 'ramda';
 import getClassName from 'getclassname'
 import "./Table.scss"
 
-const Table = (props) => {
-    const { bingo } = props
-    const [selected, setSelected] = useState({})
+const InnerTable = (props) => {
+    const { bingo, selected, setSelected, onSelect } = props
 
-    const toggle = (x) => setSelected({ ...selected, [x]: !selected[x] });
+    const toggle = (x) => {
+        onSelect?.(x,Boolean(!selected[x]))
+        setSelected({ ...selected, [x]: !selected[x] });
+    }
 
     const getCellClass = x => getClassName({
         base: "table__body__cell",
@@ -25,12 +27,26 @@ const Table = (props) => {
         </div>
         <div className="table__body">
             {range(0,25).map((value,idx) => {
-                return <div key={idx} className={getCellClass(value)} onClick={() => toggle(value)}>
+                return <div key={idx} className={getCellClass(bingo[value])} onClick={() => toggle(bingo[value])}>
                     {bingo[value]}
                 </div>
             })}
         </div>
     </div>)
 }
+
+const Table = forwardRef((props, ref) => {
+    const [selected, setSelected] = useState({})
+    useImperativeHandle(ref, () => ({
+        toggleCell: (x) => {
+            setSelected({...selected, [x]: !selected[x]})
+        },
+        setCell: (x,state) => {
+            setSelected({...selected, [x]: state})
+        },
+        reset: () => setSelected({})
+    }))
+    return <InnerTable {...{...props, selected, setSelected}} />
+})
 
 export default Table

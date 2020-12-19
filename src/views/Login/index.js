@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Either, Maybe } from "jazzi";
 import { compose, path } from "ramda";
-import { useState } from "react";
 import Button from "../../components/Button";
 import { Views } from "../../types";
 import { database, auth } from "../../firebase"
@@ -26,7 +26,7 @@ const doSubmit = (value) => {
     )
 }
 
-const Login = ({ setView, setProps }) => {
+const Login = ({ setView, setProps, addBingo }) => {
     const [value, setValue] = useState("");
     const [loading, setLoading] = useState(false)
     const handleChange = compose( setValue, path(["target","value"]));
@@ -39,8 +39,8 @@ const Login = ({ setView, setProps }) => {
             .then((mView) => {
                 setLoading(false)
                 mView.effect(([view, extra]) => {
+                    addBingo(extra,value)
                     setView(view)
-                    setProps({ bingo: extra })
                 }).onNone(() => {
                     setValue("")
                     alert("No se pudo encontrar bingo")
