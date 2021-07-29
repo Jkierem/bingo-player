@@ -4,7 +4,6 @@ import { compose, path } from "ramda";
 import Button from "../../components/Button";
 import { Views } from "../../types";
 import { database, auth } from "../../firebase"
-import logo from './latir.jpeg'
 import './Login.scss';
 
 const doSubmit = (value) => {
@@ -55,16 +54,16 @@ const Login = ({ setView, setProps, addBingo }) => {
 
     return <form className="login" onSubmit={handleSubmit}>
         <div className="logo">
-            <img alt="logo" src={logo} width="120" height="120"/>
+            {/* <img alt="logo" src={logo} width="120" height="120"/> */}
         </div>
         <input 
             id="code" 
-            placeholder="Codigo de bingo..." 
+            placeholder="Bingo code identifier.." 
             value={value} 
             onChange={handleChange}
             className="input"
         />
-        <Button loading={loading} onClick={handleSubmit}>Aceptar</Button>
+        <Button loading={loading} onClick={handleSubmit}>Submit</Button>
     </form>
 }
 

@@ -14,7 +14,7 @@ const firebaseConfig = {
   appId: getEnv("APP_ID"),
 }
 
-firebase.initializeApp(firebaseConfig)
+// firebase.initializeApp(firebaseConfig)
 
-export const auth = firebase.auth()
-export const database = firebase.database()
+export const auth = {}//firebase.auth()
+export const database = {}//firebase.database()

@@ -1,4 +1,4 @@
-import { Either, EnumType, IO } from "jazzi"
+import { Either, EnumType } from "jazzi"
 
 const randomInteger = (min,max) => {
     return Math.floor((Math.random() * (max - min)) + min)
